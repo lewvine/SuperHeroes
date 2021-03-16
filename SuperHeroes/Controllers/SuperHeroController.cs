@@ -28,7 +28,8 @@ namespace SuperHeroes.Controllers
         // GET: SuperHeroController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SuperHero superhero = _context.SuperHeroes.Find(id);
+            return View(superhero);
         }
 
         // GET: SuperHeroController/Create
@@ -57,7 +58,8 @@ namespace SuperHeroes.Controllers
         // GET: SuperHeroController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SuperHero superhero = _context.SuperHeroes.Find(id);
+            return View(superhero);
         }
 
         // POST: SuperHeroController/Edit/5
@@ -78,7 +80,8 @@ namespace SuperHeroes.Controllers
         // GET: SuperHeroController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            SuperHero superhero = _context.SuperHeroes.Find(id);
+            return View(superhero);
         }
 
         // POST: SuperHeroController/Delete/5
