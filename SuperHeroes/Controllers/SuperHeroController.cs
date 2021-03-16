@@ -81,7 +81,9 @@ namespace SuperHeroes.Controllers
         public ActionResult Delete(int id)
         {
             SuperHero superhero = _context.SuperHeroes.Find(id);
-            return View(superhero);
+            _context.SuperHeroes.Remove(superhero);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: SuperHeroController/Delete/5
