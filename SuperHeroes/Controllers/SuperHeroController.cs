@@ -55,28 +55,25 @@ namespace SuperHeroes.Controllers
             }
         }
 
-        // GET: SuperHeroController/Edit/5
+        // GET: SuperHeroController/Edit/5\
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             SuperHero superhero = _context.SuperHeroes.Find(id);
-            _context.SuperHeroes.Add(superhero);
-            _context.SaveChanges();
             return View(superhero);
         }
 
         // POST: SuperHeroController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(SuperHero superhero)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var newHero = _context.SuperHeroes.Where(s => s.Id == superhero.Id).FirstOrDefault(); 
+            _context.SuperHeroes.Remove(newHero);
+            _context.SuperHeroes.Add(superhero);
+
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: SuperHeroController/Delete/5
