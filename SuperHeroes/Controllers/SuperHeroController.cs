@@ -59,6 +59,8 @@ namespace SuperHeroes.Controllers
         public ActionResult Edit(int id)
         {
             SuperHero superhero = _context.SuperHeroes.Find(id);
+            _context.SuperHeroes.Add(superhero);
+            _context.SaveChanges();
             return View(superhero);
         }
 
